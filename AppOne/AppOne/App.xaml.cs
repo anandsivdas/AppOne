@@ -8,13 +8,21 @@ namespace AppOne
 {
     public partial class App : Application
     {
-
+        IAuth auth;
         public App()
         {
             InitializeComponent();
-
             DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
+
+            auth = DependencyService.Get<IAuth>();
+            if (auth.IsSignIn())
+            {
+                MainPage = new AppShell();
+            }
+            else
+            {
+                MainPage = new LoginPage();
+            }
         }
 
         protected override void OnStart()

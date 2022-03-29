@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "612202327126",
+    "project_id": "appone-bc3ce",
+    "storage_bucket": "appone-bc3ce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:612202327126:android:65627b9bdde1e1d63a1ff7",
+        "android_client_info": {
+          "package_name": "com.gadgeon.appone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "612202327126-9afvq5ovhbuusod9dt59e656sif19mig.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDa19VOJvWmLO-LmO33KbStWukBw8zIRM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "612202327126-9afvq5ovhbuusod9dt59e656sif19mig.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

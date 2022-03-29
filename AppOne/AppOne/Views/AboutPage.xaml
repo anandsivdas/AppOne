@@ -3,20 +3,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppOne.Views.AboutPage"
              xmlns:vm="clr-namespace:AppOne.ViewModels"
-             Title="{Binding Title}">
+             Title="{Binding Title}" Shell.BackgroundColor="Black" BackgroundImageSource="mainBg.png">
     
     <ContentPage.BindingContext>
         <vm:AboutViewModel />
     </ContentPage.BindingContext>
     
-    <ContentPage.Resources>
+    <!--<ContentPage.Resources>
         <ResourceDictionary>
-            <Color x:Key="Accent">Black</Color>
+            <Button x:Key="Button1" HeightRequest="150" WidthRequest="150" CornerRadius="15" BackgroundColor="Transparent" BorderColor="White" BorderWidth="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Color x:Key="Accent">#3F51B5</Color>
         </ResourceDictionary>
-    </ContentPage.Resources>
+    </ContentPage.Resources>-->
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height=".1*"/>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".05*"/>
+                <ColumnDefinition Width=".4*"/>
+                <ColumnDefinition Width=".4*"/>
+                <ColumnDefinition Width=".05*"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout Grid.Column="1">
+                <!--<Button Style ="{StaticResource Button1}" Text="Find BLE" ImageSource="icon_BLE"/>-->
+                <Button HeightRequest="150" WidthRequest="150" CornerRadius="15" BackgroundColor="Transparent" BorderColor="White" ImageSource="icon_Ble" Text="Find ble" BorderWidth="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </StackLayout>
+            <StackLayout Grid.Column="2">
+                <Button HeightRequest="150" WidthRequest="150" CornerRadius="15" BackgroundColor="Transparent" BorderColor="White" ImageSource="icon_ipCam" Text="IP Camera" BorderWidth="1" HorizontalOptions="Center" VerticalOptions="Center" Clicked="Camera_Clicked"/>
+            </StackLayout>
+        </Grid>
+    </Grid>
+    <!--<Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
@@ -43,10 +65,9 @@
                 </Label>
                 <Button Margin="0,10,0,0" Text="Learn more"
                         Command="{Binding OpenWebCommand}"
-                        BackgroundColor="{StaticResource Primary}"
-                        TextColor="White" />
+                        BackgroundColor="{StaticResource Accent}"
+                        TextColor="White"
+                        />
             </StackLayout>
-        </ScrollView>
-    </Grid>
-
+        </ScrollView>-->
 </ContentPage>

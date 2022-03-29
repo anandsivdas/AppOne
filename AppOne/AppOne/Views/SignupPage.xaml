@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:CurvedEntry"
+             x:Class="AppOne.Views.SignupPage" BackgroundImageSource="mainBg.png">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand" Padding="20,0,20,0" Spacing="20">
+            <custom:CustomEntry x:Name="EmailInput" Placeholder="Enter your username" PlaceholderColor="Gray" VerticalOptions="StartAndExpand" IsCurvedCornersEnabled="True" CornerRadius="20" TextColor="White" BorderColor="White" BorderWidth="3"/>
+            <custom:CustomEntry x:Name="PasswordInput" Placeholder="Enter your password" PlaceholderColor="Gray" IsPassword="True" VerticalOptions="StartAndExpand" IsCurvedCornersEnabled="True" CornerRadius="20" TextColor="White" BorderColor="White" BorderWidth="3"/>
+            <Button VerticalOptions="Center" Text="Add User" CornerRadius="25" HorizontalOptions="CenterAndExpand" WidthRequest="150" Clicked="Signup_Clicked"/>
+            <ImageButton Source="icon_back.png" BackgroundColor="Transparent" Rotation="180" Clicked="BackButton_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

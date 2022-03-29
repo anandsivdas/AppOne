@@ -8,16 +8,23 @@ namespace AppOne
 {
     public partial class AppShell : Xamarin.Forms.Shell
     {
+        IAuth auth;
         public AppShell()
         {
             InitializeComponent();
+            auth = DependencyService.Get<IAuth>();
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+            //Routing.RegisterRoute(nameof(AboutPage), typeof(AboutPage));
         }
 
-        private async void OnMenuItemClicked(object sender, EventArgs e)
+        private void OnMenuItemClicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("//LoginPage");
+            var signOut = auth.SignOut();
+            if (signOut)
+            {
+                Application.Current.MainPage = new LoginPage();
+            }
         }
     }
 }
