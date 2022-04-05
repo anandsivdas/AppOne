@@ -19,14 +19,52 @@
                 <ColumnDefinition Width=".9*"/>
                 <ColumnDefinition Width=".05*"/>
             </Grid.ColumnDefinitions>
-            <Image Grid.Row="0" Grid.Column="1" Margin="0,0,0,20" Source="splash_AppOne" VerticalOptions="End" HorizontalOptions="Center"/>
-            <StackLayout Grid.Row="2" Grid.Column="1" Padding="10,0,10,0" VerticalOptions="Start">
-                <Button VerticalOptions="Center" Text="Login" CornerRadius="25" HorizontalOptions="CenterAndExpand" WidthRequest="150" Clicked="Login_Clicked"/>
-                <Button VerticalOptions="End" Text="New User? SignUp" FontAttributes="Bold" HorizontalOptions="Center" BackgroundColor="Transparent" Command="{Binding SignupCommand}"/>
+            <Image Grid.Row="0"
+                   Grid.Column="1"
+                   Margin="0,0,0,20"
+                   Source="splash_AppOne"
+                   VerticalOptions="End"
+                   HorizontalOptions="Center"/>
+            <StackLayout Grid.Row="2"
+                         Grid.Column="1"
+                         Padding="10,0,10,0"
+                         VerticalOptions="Start">
+                <Button VerticalOptions="Center"
+                        Text="Login"
+                        CornerRadius="25"
+                        HorizontalOptions="CenterAndExpand"
+                        WidthRequest="150"
+                        Clicked="Login_Clicked"/>
+                <Button VerticalOptions="End"
+                        Text="New User? SignUp"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        BackgroundColor="Transparent"
+                        Command="{Binding SignupCommand}"/>
             </StackLayout>
-            <StackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="End" Padding="0,0,0,30">
-                <custom:CustomEntry x:Name="EmailInput" Placeholder="Enter username" PlaceholderColor="Gray" VerticalOptions="StartAndExpand" IsCurvedCornersEnabled="True" CornerRadius="20" TextColor="White" BorderColor="White" BorderWidth="3"/>
-                <custom:CustomEntry x:Name="PasswordInput" Placeholder="Enter password" PlaceholderColor="Gray" IsPassword="True" VerticalOptions="StartAndExpand" IsCurvedCornersEnabled="True" CornerRadius="20" TextColor="White" BorderColor="White" BorderWidth="3"/>
+            <StackLayout Grid.Row="1"
+                         Grid.Column="1"
+                         VerticalOptions="End"
+                         Padding="0,0,0,30">
+                <custom:CustomEntry x:Name="EmailInput"
+                                    Placeholder="Enter username" 
+                                    PlaceholderColor="Gray"
+                                    VerticalOptions="StartAndExpand"
+                                    IsCurvedCornersEnabled="True" 
+                                    CornerRadius="20"
+                                    TextColor="White"
+                                    BorderColor="White" 
+                                    BorderWidth="3"/>
+                <custom:CustomEntry x:Name="PasswordInput"
+                                    Placeholder="Enter password"
+                                    PlaceholderColor="Gray" 
+                                    IsPassword="True"
+                                    VerticalOptions="StartAndExpand"
+                                    IsCurvedCornersEnabled="True" 
+                                    CornerRadius="20" 
+                                    TextColor="White"
+                                    BorderColor="White"
+                                    BorderWidth="3"/>
             </StackLayout>
         </Grid>
     </ContentPage.Content>
