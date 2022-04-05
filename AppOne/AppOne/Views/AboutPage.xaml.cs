@@ -19,5 +19,10 @@ namespace AppOne.Views
             //CrossMediaManager.Current.Play(uri);
             Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
         }
+
+        private void BLE_Clicked(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new DeviceView();
+        }
     }
 }

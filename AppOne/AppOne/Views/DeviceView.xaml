@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppOne.Views.DeviceView" Title="Device" BackgroundImageSource="mainBg.png"
+             xmlns:vm="clr-namespace:AppOne.ViewModels">
+
+    <ContentPage.BindingContext>
+        <vm:DeviceViewModel></vm:DeviceViewModel>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".1*"/>
+                <RowDefinition Height=".15*"/>
+                <RowDefinition Height=".78*"/>
+            </Grid.RowDefinitions>
+            <Button ImageSource="icon_back2"
+                    Grid.Row="0"
+                    WidthRequest="60"
+                    Opacity=".7"
+                    VerticalOptions="Center"
+                    BackgroundColor="Transparent" 
+                    HorizontalOptions="StartAndExpand"
+                    Clicked="BackButton_Clicked"/>
+            <StackLayout Grid.Row="1"
+                         Orientation="Horizontal"
+                         Margin="0,0,0,0"
+                         BackgroundColor="Transparent">
+                <Button x:Name="btnScan"
+                        Text="Scan BLE devices"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center" 
+                        CornerRadius="25"
+                        WidthRequest="200"
+                        Command="{Binding ScanCommand}"
+                        IsEnabled="{Binding CanScan}"/>
+            </StackLayout>
+            <!--<StackLayout Orientation="Horizontal">
+                <Button x:Name="btnConnect" Text="Connect" Clicked="btnConnect_Clicked"/>
+                <Button x:Name="btnKnowConnect" Text="Connect know device" Clicked="btnKnowConnect_Clicked"/>
+            </StackLayout>-->
+            <ScrollView Grid.Row="2">
+                <StackLayout BackgroundColor="Transparent"
+                             Orientation="Vertical">
+                    <StackLayout BackgroundColor="DimGray">
+                        <Label Text="Available Devices"
+                               TextColor="White" 
+                               HorizontalOptions="Center"
+                               VerticalTextAlignment="Center"
+                               HeightRequest="30"/>
+                    </StackLayout>
+                    <ListView x:Name="lv"
+                              ItemSelected="lv_ItemSelected"
+                              BackgroundColor="Transparent"
+                              SeparatorColor="SlateGray"
+                              ItemsSource="{Binding DeviceList}">
+                    <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout>
+                                        <StackLayout Margin="20,0,0,0"
+                                                     HeightRequest="50" 
+                                                     Orientation="Horizontal">
+                                            <Image Source="icon_Ble" 
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="Center"
+                                                HeightRequest="25"
+                                                WidthRequest="20"
+                                                BackgroundColor="Blue"/>
+                                            <Label Text="{Binding NativeDevice.Name}" 
+                                                FontAttributes="Bold"
+                                                VerticalTextAlignment="Center" 
+                                                VerticalOptions="Center"
+                                                TextColor="White"/>
+                                        </StackLayout>
+                                        <!--<BoxView HeightRequest="1" Color="DimGray" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand"/>-->
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -13,8 +13,8 @@ namespace AppOne
         {
             InitializeComponent();
             auth = DependencyService.Get<IAuth>();
-            Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
-            Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+            //Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
+            //Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
             //Routing.RegisterRoute(nameof(AboutPage), typeof(AboutPage));
         }
 

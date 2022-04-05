@@ -31,10 +31,10 @@
             </Grid.ColumnDefinitions>
             <StackLayout Grid.Column="1">
                 <!--<Button Style ="{StaticResource Button1}" Text="Find BLE" ImageSource="icon_BLE"/>-->
-                <Button HeightRequest="150" WidthRequest="150" CornerRadius="15" BackgroundColor="Transparent" BorderColor="White" ImageSource="icon_Ble" Text="Find ble" BorderWidth="1" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Button HeightRequest="150" WidthRequest="150" CornerRadius="15" BackgroundColor="Transparent" BorderColor="White" ImageSource="icon_Ble" Text="Find ble" BorderWidth="1" HorizontalOptions="Center" VerticalOptions="Center" Clicked="BLE_Clicked"/>
             </StackLayout>
             <StackLayout Grid.Column="2">
-                <Button HeightRequest="150" WidthRequest="150" CornerRadius="15" BackgroundColor="Transparent" BorderColor="White" ImageSource="icon_ipCam" Text="IP Camera" BorderWidth="1" HorizontalOptions="Center" VerticalOptions="Center" Clicked="Camera_Clicked"/>
+                <Button HeightRequest="150" WidthRequest="150" CornerRadius="15" BackgroundColor="Transparent" BorderColor="White" ImageSource="icon_ipCam" Text="IP Cam" BorderWidth="1" HorizontalOptions="Center" VerticalOptions="Center" Clicked="Camera_Clicked"/>
             </StackLayout>
         </Grid>
     </Grid>
