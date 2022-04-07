@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppOne.Views.IpCamView"
+             xmlns:vm="clr-namespace:AppOne.ViewModels"
+             xmlns:custom="clr-namespace:CurvedEntry"
+             BackgroundImageSource="mainBg.png">
+
+    <ContentPage.BindingContext>
+        <vm:IpCamViewModel></vm:IpCamViewModel>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".10*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height=".10*"/>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0" Margin="0,10">
+                <Button ImageSource="icon_back2" HorizontalOptions="Start" WidthRequest="50" BackgroundColor="Transparent" Clicked="BackButton_Clicked"/>
+                <Label HorizontalOptions="Center"
+                   VerticalOptions="EndAndExpand"
+                   Text="Enter the IP Address and Credentials"
+                   FontSize="20"
+                   Margin="0,0,0,20"
+                   TextColor="White"/>
+            </StackLayout>
+            <StackLayout Grid.Row="1" Padding="15" VerticalOptions="CenterAndExpand">
+                <Label Text="Enter the IP address here"
+                       TextColor="White"/>
+                <custom:CustomEntry x:Name="urlEntry"
+                                    Text="{Binding CamModel.IpAddress}"
+                                    Placeholder="eg: 192.168.X.X"
+                                    BackgroundColor="White"/>
+            </StackLayout>
+            <StackLayout Grid.Row="2" Padding="15" VerticalOptions="CenterAndExpand">
+                <Label Text="Enter the Port ID here"
+                       TextColor="White"/>
+                <custom:CustomEntry x:Name="portEntry"
+                                    Text="{Binding CamModel.Port}"
+                                    Placeholder="eg: 8080"
+                                    BackgroundColor="White"/>
+            </StackLayout>
+            <StackLayout Grid.Row="3" Padding="15" VerticalOptions="CenterAndExpand">
+                <Label Text="Enter the username"
+                       TextColor="White"/>
+                <custom:CustomEntry x:Name="usernameEntry"
+                                    Text="{Binding CamModel.Username}"
+                                    Placeholder="eg: admin"
+                                    BackgroundColor="White"/>
+            </StackLayout>
+            <StackLayout Grid.Row="4" Padding="15" VerticalOptions="CenterAndExpand">
+                <Label Text="Enter the password"
+                       TextColor="White"/>
+                <custom:CustomEntry x:Name="passwordEntry"
+                                    Text="{Binding CamModel.Password}"
+                                    Placeholder="eg: admin@123"
+                                    IsPassword="True"
+                                    BackgroundColor="White"/>
+            </StackLayout>
+            <Button x:Name="BtnConnect"
+                    Grid.Row="5"
+                    Text="Connect"
+                    CornerRadius="15"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Start"
+                    WidthRequest="150" 
+                    Command="{Binding ConnectCommand}"
+                    Margin="0,20"
+                    IsEnabled="{Binding IsBtnEnabled}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

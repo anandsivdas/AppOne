@@ -103,7 +103,7 @@ namespace AppOne.ViewModels
                             DeviceList.Add(a.Device);
                     }
                 };
-                //We have to test if the device is scanning 
+                //To test if the device is scanning 
                 if (!adapter.IsScanning)
                 {
                     DeviceList.Clear();

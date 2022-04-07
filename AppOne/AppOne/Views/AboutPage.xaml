@@ -4,17 +4,10 @@
              x:Class="AppOne.Views.AboutPage"
              xmlns:vm="clr-namespace:AppOne.ViewModels"
              Title="{Binding Title}" Shell.BackgroundColor="Black" BackgroundImageSource="mainBg.png">
-    
+
     <ContentPage.BindingContext>
         <vm:AboutViewModel />
     </ContentPage.BindingContext>
-    
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <Button x:Key="Button1" HeightRequest="150" WidthRequest="150" CornerRadius="15" BackgroundColor="Transparent" BorderColor="White" BorderWidth="1" HorizontalOptions="Center" VerticalOptions="Center"/>
-            <Color x:Key="Accent">#3F51B5</Color>
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
 
     <Grid>
         <Grid.RowDefinitions>
@@ -30,7 +23,6 @@
                 <ColumnDefinition Width=".05*"/>
             </Grid.ColumnDefinitions>
             <StackLayout Grid.Column="1">
-                <!--<Button Style ="{StaticResource Button1}" Text="Find BLE" ImageSource="icon_BLE"/>-->
                 <Button HeightRequest="150" WidthRequest="150" CornerRadius="15" BackgroundColor="Transparent" BorderColor="White" ImageSource="icon_Ble" Text="Find ble" BorderWidth="1" HorizontalOptions="Center" VerticalOptions="Center" Clicked="BLE_Clicked"/>
             </StackLayout>
             <StackLayout Grid.Column="2">
@@ -38,36 +30,4 @@
             </StackLayout>
         </Grid>
     </Grid>
-    <!--<Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                    <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />
-                </ContentView>
-            </StackLayout>
-        </StackLayout>
-        <ScrollView Grid.Row="1">
-            <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
-                <Label Text="Start developing now" FontSize="Title"/>
-                <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="0,0,0,0"/>
-                <Label FontSize="16" Padding="0,24,0,0">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="Learn more at "/>
-                                <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Button Margin="0,10,0,0" Text="Learn more"
-                        Command="{Binding OpenWebCommand}"
-                        BackgroundColor="{StaticResource Accent}"
-                        TextColor="White"
-                        />
-            </StackLayout>
-        </ScrollView>-->
 </ContentPage>

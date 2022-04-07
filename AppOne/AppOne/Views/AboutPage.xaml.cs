@@ -15,9 +15,7 @@ namespace AppOne.Views
 
         private void Camera_Clicked(object sender, EventArgs e)
         {
-            var uri = new Uri("https://www.appsloveworld.com/wp-content/uploads/2018/10/640.mp4");
-            //CrossMediaManager.Current.Play(uri);
-            Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+            App.Current.MainPage = new IpCamView();
         }
 
         private void BLE_Clicked(object sender, EventArgs e)
