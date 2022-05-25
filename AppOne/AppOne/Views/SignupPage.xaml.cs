@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using AppOne.Services;
+using Rg.Plugins.Popup.Extensions;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,24 +16,31 @@ namespace AppOne.Views
             auth = DependencyService.Get<IAuth>();
         }
 
-        async void Signup_Clicked(object sender, EventArgs e)
+        public void Signup_Clicked(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(EmailInput.Text) && !string.IsNullOrEmpty(PasswordInput.Text))
             {
-                var user = auth.SignUpWithEmailAndPassword(EmailInput.Text, PasswordInput.Text);
-                if (user != null)
+                if (Constants.EmailValidityCheck(EmailInput.Text))
                 {
-                    await DisplayAlert("Success", " User account has been added successfully", "Ok");
-                    var signOut = auth.SignOut();
-                    if (signOut)
+                    var user = auth.SignUpWithEmailAndPassword(EmailInput.Text, PasswordInput.Text);
+                    if (user != null)
                     {
-                        Application.Current.MainPage = new LoginPage();
+                        AlertViewDisplay("Great!", "Your account has been added successfully", AlertViewOptions.OK);
+                        var signOut = auth.SignOut();
+                        if (signOut)
+                        {
+                            Application.Current.MainPage = new LoginPage();
+                        }
                     }
+                }
+                else
+                {
+                    AlertViewDisplay("Login failed", "Please enter a valid email address", Services.AlertViewOptions.OK);
                 }
             }
             else
             {
-                await DisplayAlert("Error", "Please enter valid credentials", "Ok");
+                AlertViewDisplay("Error", "Please fill both fields to proceed", AlertViewOptions.OK);
             }
 
         }
@@ -44,6 +48,18 @@ namespace AppOne.Views
         private void BackButton_Clicked(object sender, EventArgs e)
         {
             App.Current.MainPage = new LoginPage();
+        }
+
+        private void AlertViewDisplay(string title, string message, AlertViewOptions alertType)
+        {
+            var pop = new AlertView(title, message, alertType);
+            pop.OnAlertClosed += Pop_OnAlertClosed;
+            App.Current.MainPage.Navigation.PushPopupAsync(pop, true);
+        }
+
+        private void Pop_OnAlertClosed(object sender, DialogResultEventArgs e)
+        {
+            App.Current.MainPage.Navigation.PopPopupAsync(true);
         }
     }
 }

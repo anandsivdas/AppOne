@@ -24,6 +24,7 @@ namespace AppOne.Droid
         {
             base.OnCreate(savedInstanceState);
             FirebaseApp.InitializeApp(Application.Context);
+            Rg.Plugins.Popup.Popup.Init(this);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             CheckPermissions();

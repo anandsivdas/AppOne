@@ -6,6 +6,10 @@ using System.Collections.ObjectModel;
 using System;
 using Xamarin.Forms;
 using System.Threading.Tasks;
+using AppOne.Views;
+using AppOne.Services;
+using Rg.Plugins.Popup.Extensions;
+using Android.Content;
 
 namespace AppOne.ViewModels
 {
@@ -31,12 +35,12 @@ namespace AppOne.ViewModels
             }
         }
 
-        public event EventHandler<DisplayEventArgs> BleStatus;
-        protected virtual void DisplayAlertEvent(DisplayEventArgs e)
-        {
-            EventHandler<DisplayEventArgs> handler = BleStatus;
-            handler?.Invoke(this, e);
-        }
+        //public event EventHandler<DisplayEventArgs> BleStatus;
+        //protected virtual void DisplayAlertEvent(DisplayEventArgs e)
+        //{
+        //    EventHandler<DisplayEventArgs> handler = BleStatus;
+        //    handler?.Invoke(this, e);
+        //}
 
         private ObservableCollection<IDevice> _deviceList = new ObservableCollection<IDevice>();
         public ObservableCollection<IDevice> DeviceList
@@ -88,8 +92,10 @@ namespace AppOne.ViewModels
         private void ScanBleDevices(object sender)
         {
             if (ble.State == BluetoothState.Off)
-            {
-                DisplayAlertEvent(new DisplayEventArgs("Error","Your Bluetooth is turned off"));
+            {                
+                var pop = new AlertView("Scanning failed", "Your bluetooth is turned off. Enable it now?", AlertViewOptions.OkCancel);
+                pop.OnAlertClosed += Pop_OnAlertClosed;
+                App.Current.MainPage.Navigation.PushPopupAsync(pop, true);
                 return;
             }
             CanScan = false;
@@ -116,19 +122,52 @@ namespace AppOne.ViewModels
             }
             catch (Exception ex)
             {
-                DisplayAlertEvent(new DisplayEventArgs("Error", ex.Message));
+                var pop = new AlertView("Something went wrong", ex.Message, AlertViewOptions.OK);
+                pop.OnAlertClosed += Pop_OnAlertClosed;
+                App.Current.MainPage.Navigation.PushPopupAsync(pop, true);
             }
 
         }
-    }
-    public class DisplayEventArgs : EventArgs
-    {
-        public string Message { get; set; }
-        public string Title { get; set; }
-        public DisplayEventArgs(string title, string message)
+
+        private void Pop_OnAlertClosed(object sender, DialogResultEventArgs e)
         {
-            Message = message;
-            Title = title;
+            if (e.CanContinue)
+            {
+                OpenBluetoothSettings();
+            }
+            App.Current.MainPage.Navigation.PopPopupAsync(true);
+        }
+
+        /// <summary>
+        /// //Code to access the Bluetooth settings in android
+        /// </summary>
+        private void OpenBluetoothSettings()
+        {
+            Intent intentOpenBluetoothSettings = new Intent();
+            intentOpenBluetoothSettings.SetAction(Android.Provider.Settings.ActionBluetoothSettings);
+            intentOpenBluetoothSettings.AddFlags(ActivityFlags.NewTask);
+            Android.App.Application.Context.StartActivity(intentOpenBluetoothSettings);
+        }
+
+        /// <summary>
+        /// //Code to access the Location settings in android
+        /// </summary>
+        public void OpenLocationSettings()
+        {
+            Intent intentlocationopen = new Intent();
+            intentlocationopen.SetAction(Android.Provider.Settings.ActionLocationSourceSettings);
+            intentlocationopen.AddFlags(ActivityFlags.NewTask);
+            Android.App.Application.Context.StartActivity(intentlocationopen);
         }
     }
+    //public class DisplayEventArgs : EventArgs
+    //{
+    //    public string Message { get; set; }
+    //    public string Title { get; set; }
+    //    public DisplayEventArgs(string title, string message)
+    //    {
+    //        Message = message;
+    //        Title = title;
+    //    }
+    //}
 }

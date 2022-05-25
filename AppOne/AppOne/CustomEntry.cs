@@ -45,5 +45,10 @@ namespace CurvedEntry
             get => (bool)GetValue(IsCurvedCornersEnabledProperty); 
             set => SetValue(IsCurvedCornersEnabledProperty, value); 
         }
+
+
+        
+
+
     }
 }

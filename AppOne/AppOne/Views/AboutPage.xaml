@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:shared="clr-namespace:AppOne.Views"
              x:Class="AppOne.Views.AboutPage"
              xmlns:vm="clr-namespace:AppOne.ViewModels"
              Title="{Binding Title}" Shell.BackgroundColor="Black" BackgroundImageSource="mainBg.png">
@@ -28,6 +29,7 @@
             <StackLayout Grid.Column="2">
                 <Button HeightRequest="150" WidthRequest="150" CornerRadius="15" BackgroundColor="Transparent" BorderColor="White" ImageSource="icon_ipCam" Text="IP Cam" BorderWidth="1" HorizontalOptions="Center" VerticalOptions="Center" Clicked="Camera_Clicked"/>
             </StackLayout>
+
         </Grid>
     </Grid>
 </ContentPage>

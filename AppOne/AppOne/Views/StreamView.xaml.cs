@@ -10,14 +10,19 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using AppOne.Services;
+using AppOne.ViewModels;
+
 namespace AppOne.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StreamView : ContentPage
     {
+        StreamViewModel viewModel = new StreamViewModel();
+
         public StreamView()
         {
             InitializeComponent();
+            this.BindingContext = viewModel;
             StreamMedia();
         }
 
@@ -55,6 +60,20 @@ namespace AppOne.Views
         {
             VideoViewer.MediaPlayer.Stop();
             App.Current.MainPage = new IpCamView();
+        }
+
+        private void RecButton_Clicked(object sender, EventArgs e)
+        {
+            if (viewModel.IsRecording)
+            {
+                recordBtn.Source = "icon_startRecord";
+                viewModel.IsRecording = false;
+            }
+            else
+            {
+                recordBtn.Source = "icon_stopRecord";
+                viewModel.IsRecording= true;
+            }
         }
     }
 }

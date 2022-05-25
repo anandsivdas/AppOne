@@ -14,13 +14,13 @@ namespace AppOne.Views
         {
             InitializeComponent();
             this.BindingContext = viewModel;
-            viewModel.BleStatus += ViewModel_BLEStatus;
+            //viewModel.BleStatus += ViewModel_BLEStatus;
         }
 
-        private void ViewModel_BLEStatus(object sender, DisplayEventArgs e)
-        {
-            DisplayAlert(e.Title, e.Message, "OK");
-        }
+        //private void ViewModel_BLEStatus(object sender, DisplayEventArgs e)
+        //{
+        //    DisplayAlert(e.Title, e.Message, "OK");
+        //}
 
         private void BackButton_Clicked(object sender, EventArgs e)
         {

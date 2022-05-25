@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns:pages="http://rotorgames.com" 
+                 xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 x:Class="AppOne.Views.AlertView">
+    <ContentPage.Content>
+        <Grid HeightRequest="180" VerticalOptions="Center" Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".7*"/>
+                <RowDefinition Height=".3*"/>
+            </Grid.RowDefinitions>
+            <Frame Grid.RowSpan="2" HeightRequest="180" BackgroundColor="White" VerticalOptions="Center" HasShadow="True" CornerRadius="30">
+                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="10">
+                        <Label x:Name="titleMsg"
+                               FontSize="22"
+                               Text="Success!"
+                               FontAttributes="Bold" 
+                               HorizontalTextAlignment="Center"
+                               VerticalOptions="Start"
+                               TextColor="DarkBlue"/>
+                        <Label x:Name="subTitleMsg"
+                               FontSize="16"
+                               Text="You have passed this level"
+                               HorizontalTextAlignment="Center"
+                               VerticalOptions="Start"
+                               TextColor="DarkBlue"/>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+            <StackLayout Grid.Row="1" Orientation="Horizontal" Padding="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Button x:Name="OkBtn" Text="Ok" CornerRadius="30" BackgroundColor="DarkBlue" HorizontalOptions="FillAndExpand" Clicked="OkBtn_Clicked"/>
+                <Button x:Name="cancelBtn" Text="Cancel" CornerRadius="30" BackgroundColor="DarkBlue" HorizontalOptions="FillAndExpand" Clicked="cancelBtn_Clicked"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+    </pages:PopupPage>
